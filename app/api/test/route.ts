@@ -30,11 +30,11 @@ export async function POST() {
       timestamp: new Date().toISOString()
     })
     
-  } catch (error) {
-    console.error("=== TEST ERROR ===")
-    console.error("Error name:", error.name)
-    console.error("Error message:", error.message)
-    console.error("Error stack:", error.stack?.substring(0, 500))
+  } catch (error: any) {
+  console.error("=== TEST ERROR ===")
+  console.error("Error name:", error?.name || 'Unknown')
+  console.error("Error message:", error?.message || String(error))
+  console.error("Error stack:", error?.stack?.substring(0, 500))
     
     return NextResponse.json({ 
       error: error.message,
