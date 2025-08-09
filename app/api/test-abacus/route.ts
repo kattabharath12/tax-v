@@ -39,8 +39,8 @@ export async function POST(request: NextRequest) {
   headers: {
     'Content-Type': 'application/json',
     ...auth
-  } as HeadersInit
-          })
+  } as any
+})
           
           const authMethod = Object.keys(auth)[0]
           const result = {
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
           results.push({
             endpoint,
             authMethod: Object.keys(auth)[0],
-            error: error.message,
+            error: error?.message || String(error),
             success: false
           })
         }
@@ -91,11 +91,11 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     })
     
-  } catch (error) {
-    console.error("Test error:", error)
-    return NextResponse.json({
-      error: error.message,
-      stack: error.stack?.substring(0, 500)
-    }, { status: 500 })
-  }
+  } catch (error: any) {
+  console.error("Test error:", error)
+  return NextResponse.json({
+    error: error?.message || String(error),
+    stack: error?.stack?.substring(0, 500)
+  }, { status: 500 })
+}
 }
