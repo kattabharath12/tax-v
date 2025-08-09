@@ -60,7 +60,7 @@ export async function POST(
     }
     console.log("✅ Document found:", {
       id: document.id,
-      filename: document.filename,
+      fileName: document.fileName,
       documentType: document.documentType,
       filePath: document.filePath
     })
