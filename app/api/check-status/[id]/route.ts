@@ -15,7 +15,6 @@ export async function GET(
         id: true,
         fileName: true,
         documentType: true,
-        status: true,
         processingStatus: true,
         createdAt: true,
         updatedAt: true,
