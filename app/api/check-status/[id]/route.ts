@@ -13,7 +13,7 @@ export async function GET(
       where: { id: params.id },
       select: {
         id: true,
-        filename: true,
+        fileName: true,
         documentType: true,
         status: true,
         processingStatus: true,
