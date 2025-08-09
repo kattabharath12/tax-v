@@ -1,8 +1,7 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
+    // Remove appDir as it's deprecated in Next.js 14
   },
   webpack: (config, { isServer }) => {
     // Handle Sharp for image processing
@@ -23,5 +22,4 @@ const nextConfig = {
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   }
 }
-
 module.exports = nextConfig
