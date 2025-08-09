@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       documentCount,
       testDocument: document ? {
         id: document.id,
-        filename: document.filename,
+        filename: document.fileName,
         filePath: document.filePath,
         fileType: document.fileType,
         documentType: document.documentType,
