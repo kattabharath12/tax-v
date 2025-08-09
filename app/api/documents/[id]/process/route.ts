@@ -152,12 +152,12 @@ export async function POST(
 }
 
     return NextResponse.json(
-      { 
-        error: "Document processing failed",
-        details: error.message
-      },
-      { status: 500 }
-    )
+  {
+    error: "Document processing failed",
+    details: error instanceof Error ? error.message : String(error)
+  },
+  { status: 500 }
+)
   }
 }
 
