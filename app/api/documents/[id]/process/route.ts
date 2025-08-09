@@ -571,10 +571,10 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
         const wageValue = parseFloat(extractedData.wages)
         const amounts = ocrText.match(/\b\d{1,3}(?:,?\d{3})*\.?\d{0,2}\b/g) || []
         const taxCandidates = amounts
-          .map(amt => parseFloat(amt.replace(/,/g, '')))
-          .filter(amt => 
-            !isNaN(amt) && 
-            amt > 0 && 
+  .map((amt: string) => parseFloat(amt.replace(/,/g, '')))
+  .filter((amt: number) =>
+    !isNaN(amt) &&
+    amt > 0 &&
             amt < wageValue && 
             amt >= 100 && 
             amt <= wageValue * 0.5 &&
