@@ -138,8 +138,8 @@ export async function POST(
 
   } catch (error) {
     console.error("=== DOCUMENT PROCESSING ERROR ===")
-    console.error("Error:", error.message)
-    console.error("Stack:", error.stack?.substring(0, 1000))
+    console.error("Error:", error instanceof Error ? error.message : String(error))
+    console.error("Stack:", error instanceof Error ? error.stack?.substring(0, 1000) : undefined)
     
     // Update status to failed
     try {
