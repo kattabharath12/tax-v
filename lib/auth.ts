@@ -5,6 +5,30 @@ import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
+// Extend NextAuth types to include id in session
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      email: string;
+      name?: string | null;
+      image?: string | null;
+    }
+  }
+  
+  interface User {
+    id: string;
+    email: string;
+    name?: string | null;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+  }
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -17,26 +41,21 @@ export const authOptions: NextAuthOptions = {
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
-
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email
           }
         });
-
         if (!user) {
           return null;
         }
-
         const isPasswordValid = await bcrypt.compare(
           credentials.password,
           user.password
         );
-
         if (!isPasswordValid) {
           return null;
         }
-
         return {
           id: user.id,
           email: user.email,
