@@ -524,7 +524,7 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
             amt.toString().length <= 8 && // Exclude very long numbers (like control numbers)
             !amt.toString().match(/^[0-9]{7,}$/) // Exclude 7+ digit numbers without decimals
           )
-          .sort((a, b) => b - a) // Sort descending
+          .sort((a: number, b: number) => b - a) // Sort descending
         
         if (numericAmounts.length > 0) {
           const wageAmount = numericAmounts[0]
