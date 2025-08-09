@@ -72,14 +72,14 @@ export async function POST(request: NextRequest) {
           results.push(result)
           console.log(`Result: ${response.status} ${response.statusText}`)
           
-        } catch (error) {
-          results.push({
-            endpoint,
-            authMethod: Object.keys(auth)[0],
-            error: error?.message || String(error),
-            success: false
-          })
-        }
+        } catch (error: any) {
+  results.push({
+    endpoint,
+    authMethod: Object.keys(auth)[0],
+    error: error?.message || String(error),
+    success: false
+  })
+}
       }
     }
     
