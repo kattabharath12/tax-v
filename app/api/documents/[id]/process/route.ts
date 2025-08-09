@@ -580,7 +580,7 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
             amt <= wageValue * 0.5 &&
             amt.toString().length <= 8
           )
-          .sort((a, b) => b - a)
+          .sort((a: number, b: number) => b - a)
         
         if (taxCandidates.length > 0) {
           const federalTax = taxCandidates[0]
