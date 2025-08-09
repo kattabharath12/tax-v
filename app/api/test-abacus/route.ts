@@ -43,13 +43,13 @@ export async function POST(request: NextRequest) {
 })
           
           const authMethod = Object.keys(auth)[0]
-          const result = {
-            endpoint,
-            authMethod,
-            status: response.status,
-            statusText: response.statusText,
-            success: response.ok
-          }
+          const result: any = {
+  endpoint,
+  authMethod,
+  status: response.status,
+  statusText: response.statusText,
+  success: response.ok
+}
           
           if (response.ok) {
             try {
