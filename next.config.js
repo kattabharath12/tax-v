@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    // Remove appDir as it's deprecated in Next.js 14
+    // Remove appDir as it's deprecated
   },
   webpack: (config, { isServer }) => {
     // Handle Sharp for image processing
@@ -10,8 +10,8 @@ const nextConfig = {
     }
     return config
   },
-  // Enable output for containerized deployment
-  output: 'standalone',
+  // Disable standalone for now
+  // output: 'standalone',
   // Image optimization settings
   images: {
     formats: ['image/webp', 'image/avif'],
