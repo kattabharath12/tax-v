@@ -153,11 +153,12 @@ async function recalculateTaxReturn(taxReturnId: string) {
 
   // Calculate tax using the same logic from tax-form-mapping
   const standardDeductions = {
-    SINGLE: 14600,
-    MARRIED_FILING_JOINTLY: 29200,
-    MARRIED_FILING_SEPARATELY: 14600,
-    HEAD_OF_HOUSEHOLD: 21900
-  };
+  SINGLE: 14600,
+  MARRIED_FILING_JOINTLY: 29200,
+  MARRIED_FILING_SEPARATELY: 14600,
+  HEAD_OF_HOUSEHOLD: 21900,
+  QUALIFYING_SURVIVING_SPOUSE: 29200
+};
 
   const adjustedGrossIncome = totalIncome;
   const standardDeduction = standardDeductions[taxReturn.filingStatus] || 14600;
