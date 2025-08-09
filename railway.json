@@ -1,11 +1,10 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "nixpacks",
-    "buildCommand": "npx prisma generate --schema=./prisma/schema.prisma && npm run build"
+    "builder": "nixpacks"
   },
   "deploy": {
-    "startCommand": "node .next/standalone/server.js",
+    "startCommand": "npm install --production && npm start",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
