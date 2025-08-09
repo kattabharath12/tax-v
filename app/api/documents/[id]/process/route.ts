@@ -214,10 +214,10 @@ async function setupGoogleCredentials() {
     }
     console.log("✅ Private key format verified")
     
-  } catch (error) {
-    console.error("❌ Failed to set up Google credentials:", error.message)
-    throw new Error(`Failed to set up Google credentials: ${error.message}`)
-  }
+  } catch (error: any) {
+  console.error("❌ Failed to set up Google credentials:", error?.message || String(error))
+  throw new Error(`Failed to set up Google credentials: ${error?.message || String(error)}`)
+}
 }
 
 // Google Document AI processing function with IMPROVED dynamic extraction
