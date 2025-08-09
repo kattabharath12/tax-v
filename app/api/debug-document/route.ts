@@ -30,11 +30,11 @@ export async function POST(request: NextRequest) {
     // Step 4: Check file system
     console.log("4. Checking file system...")
     let filesystemInfo = {
-      appExists: false,
-      documentsExists: false,
-      documentsContents: [],
-      testFileExists: false
-    }
+  appExists: false,
+  documentsExists: false,
+  documentsContents: [] as string[],  // ← Add type annotation
+  testFileExists: false
+}
     
     try {
       // Check if /app directory exists
@@ -57,9 +57,9 @@ export async function POST(request: NextRequest) {
         console.log("Test file exists at", document.filePath, ":", filesystemInfo.testFileExists)
       }
       
-    } catch (fsError) {
-      console.log("File system error:", fsError.message)
-    }
+    } catch (fsError: any) {
+  console.log("File system error:", fsError?.message || String(fsError))
+}
     
     // Step 5: Environment variables check
     console.log("5. Checking environment variables...")
@@ -95,9 +95,9 @@ export async function POST(request: NextRequest) {
     console.error("Error:", error)
     
     return NextResponse.json({
-      error: error.message,
-      type: error.constructor.name,
-      stack: error.stack?.substring(0, 500)
-    }, { status: 500 })
+  error: error instanceof Error ? error.message : String(error),
+  type: error instanceof Error ? error.constructor.name : 'Unknown',
+  stack: error instanceof Error ? error.stack?.substring(0, 500) : undefined
+}, { status: 500 })
   }
 }
