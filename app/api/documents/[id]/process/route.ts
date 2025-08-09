@@ -549,7 +549,7 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
       
       // Pattern 2: Find federal tax by position
       if (!extractedData.federalTaxWithheld) {
-        const fedTaxLineIndex = lines.findIndex(line => /Federal.*income.*tax.*withheld/i.test(line))
+        const fedTaxLineIndex = lines.findIndex((line: string) => /Federal.*income.*tax.*withheld/i.test(line))
         if (fedTaxLineIndex !== -1) {
           // Look in next 3 lines for reasonable tax amount
           for (let i = fedTaxLineIndex + 1; i <= fedTaxLineIndex + 3 && i < lines.length; i++) {
