@@ -35,11 +35,11 @@ export async function POST(request: NextRequest) {
           console.log(`Testing ${endpoint} with ${Object.keys(auth)[0]}`)
           
           const response = await fetch(endpoint, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              ...auth
-            }
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    ...auth
+  } as HeadersInit
           })
           
           const authMethod = Object.keys(auth)[0]
