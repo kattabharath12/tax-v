@@ -298,11 +298,11 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
         console.log("processWithGoogleDocumentAI: Successfully processed document")
         break
         
-      } catch (attemptError) {
-        console.log(`processWithGoogleDocumentAI: Attempt ${attempts} failed:`, attemptError.message)
-        
-        if (attempts === maxAttempts) {
-          throw attemptError
+      } catch (attemptError: any) {
+  console.log(`processWithGoogleDocumentAI: Attempt ${attempts} failed:`, attemptError?.message || String(attemptError))
+
+  if (attempts === maxAttempts) {
+    throw attemptError
         }
         
         // Wait before retry
