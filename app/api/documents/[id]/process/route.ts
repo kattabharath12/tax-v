@@ -516,10 +516,10 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
       if (!extractedData.wages) {
         const amounts = ocrText.match(/\b\d{1,3}(?:,?\d{3})*\.?\d{0,2}\b/g) || []
         const numericAmounts = amounts
-          .map(amt => parseFloat(amt.replace(/,/g, '')))
-          .filter(amt => 
-            !isNaN(amt) && 
-            amt >= 1000 && 
+  .map((amt: string) => parseFloat(amt.replace(/,/g, '')))
+  .filter((amt: number) =>
+    !isNaN(amt) &&
+    amt >= 1000 && 
             amt <= 500000 && // Lower upper limit to exclude control numbers
             amt.toString().length <= 8 && // Exclude very long numbers (like control numbers)
             !amt.toString().match(/^[0-9]{7,}$/) // Exclude 7+ digit numbers without decimals
