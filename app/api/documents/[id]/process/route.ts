@@ -384,7 +384,7 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
       
       console.log('📋 OCR Text Lines Analysis:')
       const lines = ocrText.split('\n')
-      lines.slice(0, 50).forEach((line, index) => { // First 50 lines
+      lines.slice(0, 50).forEach((line: string, index: number) => {
         const trimmed = line.trim()
         if (trimmed.length > 2) {
           console.log(`Line ${index.toString().padStart(2, '0')}: "${trimmed}"`)
