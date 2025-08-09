@@ -495,7 +495,7 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
       
       // Pattern 2: Find wages by position near "Wages, tips, other compensation"
       if (!extractedData.wages) {
-        const wageLineIndex = lines.findIndex(line => /Wages.*tips.*compensation/i.test(line))
+        const wageLineIndex = lines.findIndex((line: string) => /Wages.*tips.*compensation/i.test(line))
         if (wageLineIndex !== -1) {
           // Look in next 3 lines for reasonable wage amount
           for (let i = wageLineIndex + 1; i <= wageLineIndex + 3 && i < lines.length; i++) {
