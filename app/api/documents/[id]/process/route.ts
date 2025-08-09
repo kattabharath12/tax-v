@@ -147,9 +147,9 @@ export async function POST(
         where: { id: params.id },
         data: { processingStatus: 'FAILED' }
       })
-    } catch (updateError) {
-      console.error("Failed to update status:", updateError.message)
-    }
+    } catch (updateError: any) {
+  console.error("Failed to update status:", updateError?.message || String(updateError))
+}
 
     return NextResponse.json(
       { 
