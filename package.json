@@ -2,11 +2,11 @@
   "name": "app",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "prisma generate && next build",
-    "start": "next start",
-    "postinstall": "prisma generate"
-  },
+  "dev": "next dev", 
+  "build": "prisma generate && next build",
+  "start": "next start",
+  "postinstall": "echo 'Dependencies installed successfully'"
+},
   "prisma": {
     "seed": "tsx --require dotenv/config scripts/seed.ts"
   },
