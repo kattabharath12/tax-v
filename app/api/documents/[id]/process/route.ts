@@ -678,9 +678,9 @@ async function processWithGoogleDocumentAI(document: any): Promise<ExtractedTaxD
       processingMethod: 'google_document_ai'
     }
     
-  } catch (error) {
-  console.error("processWithGoogleDocumentAI: Error:", error.message)  // ← This line
-  console.error("processWithGoogleDocumentAI: Error stack:", error.stack?.substring(0, 500))  // ← This line
-  throw new Error(`Google Document AI processing failed: ${error.message}`)  // ← And this line
+  } catch (error: any) {
+  console.error("processWithGoogleDocumentAI: Error:", error?.message || String(error))
+  console.error("processWithGoogleDocumentAI: Error stack:", error?.stack?.substring(0, 500))
+  throw new Error(`Google Document AI processing failed: ${error?.message || String(error)}`)
 }
 }
